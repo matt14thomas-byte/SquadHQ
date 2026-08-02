@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SquadHQ — private game nights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="invite-screen" class="invite-screen">
+      <section class="invite-card">
+        <span class="eyebrow">PRIVATE GAME NIGHT HUB</span>
+        <h1>Enter the<br /><em>SquadHQ.</em></h1>
+        <p>Clips, chat, and plans for the people who actually play together.</p>
+        <form id="invite-form">
+          <label for="invite-code">Invite code</label>
+          <div class="code-row">
+            <input id="invite-code" autocomplete="off" placeholder="••••••••" required />
+            <button type="submit">Join →</button>
+          </div>
+          <small id="invite-error" role="alert"></small>
+        </form>
+        <p class="hint">Demo code: <kbd>SQUADUP</kbd></p>
+      </section>
+      <div class="orb orb-one"></div><div class="orb orb-two"></div>
+    </main>
+
+    <div id="app" class="app hidden">
+      <aside class="sidebar">
+        <a class="brand" href="#">SQUAD<span>HQ</span></a>
+        <button class="new-post" id="open-share">+ Share a clip</button>
+        <nav>
+          <a class="active" href="#clips">▣ &nbsp;Clip feed</a>
+          <a href="#chat">◉ &nbsp;Squad chat</a>
+          <a href="#members">♙ &nbsp;Members <span class="count">08</span></a>
+        </nav>
+        <div class="online"><span></span> 5 friends online</div>
+        <div class="profile"><div class="avatar">Y</div><div><b>You</b><small>Lobby host</small></div><button id="leave" title="Leave site">↪</button></div>
+      </aside>
+
+      <section class="content" id="clips">
+        <header><div><span class="eyebrow">THE HIGHLIGHT REEL</span><h2>Tonight’s clips</h2></div><button class="mobile-share" id="open-share-mobile">+ Share</button></header>
+        <div class="filters"><button class="selected">All clips</button><button>Call of Duty</button><button>Rocket League</button><button>Funny</button></div>
+        <div id="clip-feed" class="clip-grid"></div>
+      </section>
+
+      <aside class="chat-panel" id="chat">
+        <header><div><span class="eyebrow">LIVE NOW</span><h3>Squad chat</h3></div><span class="chat-online">●</span></header>
+        <div class="messages" id="messages"></div>
+        <form id="chat-form" class="chat-compose"><input id="chat-input" placeholder="Message the squad…" maxlength="280" required /><button aria-label="Send message">↑</button></form>
+      </aside>
+    </div>
+
+    <dialog id="share-dialog">
+      <form id="clip-form" method="dialog">
+        <button class="close" type="button" id="close-share">×</button>
+        <span class="eyebrow">ADD TO THE REEL</span><h2>Share a clip</h2>
+        <label>Clip title<input id="clip-title" required maxlength="60" placeholder="That final kill…" /></label>
+        <label>Video link <small>(YouTube, Twitch, or direct video)</small><input id="clip-url" type="url" required placeholder="https://…" /></label>
+        <label>Game<select id="clip-game"><option>Call of Duty</option><option>Rocket League</option><option>Other</option></select></label>
+        <button class="submit" type="submit">Post clip →</button>
+      </form>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
